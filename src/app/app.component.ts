@@ -6,11 +6,11 @@ import { Component, NgModule } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Hola Mundo!!!!';
+  title = 'Practica de Interpolación';
 
   constructor(){
     setTimeout( () => {
-      this.title = "hola de nuevo!!!";
+      this.title = this.title + ' - Modificar Imagen';
     },2000);
   }
 }
