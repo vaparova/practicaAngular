@@ -1,0 +1,15 @@
+.cardGato{
+    max-width: 300px !important;
+    margin-block: 5px !important;
+    margin-bottom: 70px !important;
+}
+
+.imgGato{
+    min-width: 270px !important;
+    max-width: 270px !important;
+    margin: 10px 10px 10px 10px !important;
+}
+
+.filaGato{
+    margin: 30px 5px !important;
+}

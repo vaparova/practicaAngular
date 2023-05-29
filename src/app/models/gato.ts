@@ -3,6 +3,7 @@ export class Gato{
     url: string;
     width: number;
     height: number;
+    visible = true;
 
     constructor(id: string, url: string, width: number, height: number){
         this.id = id;

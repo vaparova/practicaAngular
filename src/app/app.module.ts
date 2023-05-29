@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { ComponenteUnoComponent } from './components/componente-uno/componente-uno.component';
 import { ComponenteDosComponent } from './components/componente-dos/componente-dos.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GatoService } from './providers/gato.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [GatoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

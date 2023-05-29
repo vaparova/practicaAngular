@@ -21,11 +21,23 @@ export class ComponenteDosComponent  {
     ,250, 250);
 
     this.arrGatos = this.gatoServ.getGato();
-
+    setTimeout( ()=> {
+      this.mostrarGatos();
+    },2000);
     console.log(this.arrGatos);
-    
    }
 
+  mostrarGatos(){
+    let i = 0;
+    console.log(i);
+    this.arrGatos.forEach( (gato)=>{
+      console.log(i);
+      if( i > 3){
+        gato.visible = false;
+      }
+      i++;
+    });
+  }
 
   cambiarGato(){
     this.gato.url = this.gato.url + 1;

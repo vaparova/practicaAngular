@@ -1,21 +1,24 @@
 <p>Obteniendo una imagen de gato desde la Api "The Cat API"</p>
-<div *ngFor="let gato of arrGatos">
     
+<div class="row filaGato">
+    <div class="col-sm-3" *ngFor="let gato of arrGatos">
+        <div class="card cardGato" *ngIf="gato.visible">
+            <img class="imgGato" [src]="gato.url">
+            <div class="card-body">
+            <h5 class="card-title"> ID {{gato.id}}</h5>
+            <p class="card-text"> Propiedades</p>
+            <p class="card-text"> width: {{gato.width}}</p>
+            <p class="card-text"> height: {{gato.height}}</p>
+            <p class="card-text"> url: {{gato.url}}</p>
+            <p class="card-text"> visible: {{gato.visible}}</p>
 
-
-<div class="card" style="width: 18rem;">
-    <img [src]="gato.url" width="270">
-    <div class="card-body">
-      <h5 class="card-title"> ID {{gato.id}}</h5>
-      <p class="card-text"> Propiedades</p>
-      <p class="card-text"> width: {{gato.width}}</p>
-      <p class="card-text"> height: {{gato.height}}</p>
-      <p class="card-text"> url: {{gato.url}}</p>
-     
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+            <!-- <app-componente-uno [url]="i"></app-componente-uno> -->
+            
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
     </div>
-  </div>
-
+    </div>
 </div>
+
 <p>{{2 + 2}}</p>
 <button (click)="cambiarGato()">Cambiar Gato</button>
