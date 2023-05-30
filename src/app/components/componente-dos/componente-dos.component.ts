@@ -21,21 +21,22 @@ export class ComponenteDosComponent  {
     ,250, 250);
 
     this.arrGatos = this.gatoServ.getGato();
+    
     setTimeout( ()=> {
-      this.mostrarGatos();
+      this.mostrarGatos(0, 3); // 0 - 3 / 4 - 7 / 8 - 9
     },2000);
     console.log(this.arrGatos);
    }
 
-  mostrarGatos(){
-    let i = 0;
+  mostrarGatos(i: number, max: number){
     console.log(i);
-    this.arrGatos.forEach( (gato)=>{
+    this.arrGatos.forEach( (gato, index: number)=>{
       console.log(i);
-      if( i > 3){
+      if( index >= i && index <= max ){
+        gato.visible = true;
+      }else{
         gato.visible = false;
       }
-      i++;
     });
   }
 

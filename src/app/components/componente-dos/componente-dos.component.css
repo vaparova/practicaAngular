@@ -7,6 +7,7 @@
 .imgGato{
     min-width: 270px !important;
     max-width: 270px !important;
+    height: 300px !important;
     margin: 10px 10px 10px 10px !important;
 }
 

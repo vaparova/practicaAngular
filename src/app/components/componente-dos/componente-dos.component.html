@@ -1,5 +1,12 @@
 <p>Obteniendo una imagen de gato desde la Api "The Cat API"</p>
-    
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group me-2" role="group" aria-label="First group">
+      <button type="button" (click)="mostrarGatos(0,3)" class="btn btn-primary">1</button>
+      <button type="button" (click)="mostrarGatos(4,7)" class="btn btn-primary">2</button>
+      <button type="button" (click)="mostrarGatos(8,9)" class="btn btn-primary">3</button>
+    </div>
+  </div>
+
 <div class="row filaGato">
     <div class="col-sm-3" *ngFor="let gato of arrGatos">
         <div class="card cardGato" *ngIf="gato.visible">
@@ -20,5 +27,12 @@
     </div>
 </div>
 
+
+
+<br>
+<br>
+<br>
+<br>
+<!-- 
 <p>{{2 + 2}}</p>
-<button (click)="cambiarGato()">Cambiar Gato</button>
+<button (click)="cambiarGato()">Cambiar Gato</button> -->
