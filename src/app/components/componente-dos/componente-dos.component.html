@@ -27,7 +27,13 @@
     </div>
 </div>
 
-{{arrGatosDB}}
+<div>
+  {{arrGatosDB |json}}
+  <div  *ngIf="errorBD" class="alert alert-danger" role="alert">
+   {{errorTxt}}
+  </div>
+</div>
+  
 
 <br>
 <br>

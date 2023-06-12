@@ -13,7 +13,9 @@ export class ComponenteDosComponent  {
   key = 'live_ssY9l2168QNh0FjlJVVmj4Nw23DQrgWzKCxLTfG96yi96UaVcsuPusbkVCNlcj9A';
   gato: Gato;
   arrGatos: Gato[] = [];
-  arrGatosDB: Gato[] = [];
+  arrGatosDB: any[] = [];
+  errorBD = false;
+  errorTxt = '';
   
 
   constructor(private gatoServ: GatoService) {
@@ -22,7 +24,19 @@ export class ComponenteDosComponent  {
     ,250, 250);
 
     this.arrGatos = this.gatoServ.getGato(); // trae gatos de la api
-    this.arrGatosDB = this.gatoServ.getGatoBD(); // trae gatos de la bd
+    this.gatoServ.getBd().then(()=>{
+
+      console.log('Salio por el then');
+      const a = this.gatoServ.getGatoBD();
+      this.arrGatosDB.push(a);
+    }).catch( (err)=> {
+      console.log('Salio por el catch');
+      this.errorTxt = err;
+      this.errorBD = true;
+
+    }); // trae gatos de la bd
+
+    console.log(this.gatoServ.getGatoBD());
     
     setTimeout( ()=> {
       this.mostrarGatos(0, 3); // 0 - 3 / 4 - 7 / 8 - 9

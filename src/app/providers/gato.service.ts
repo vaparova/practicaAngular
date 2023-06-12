@@ -14,14 +14,13 @@ export class GatoService {
 
   constructor( private httpClient: HttpClient, private afs: AngularFireDatabase) {
     this.consumirGatos();
-    this.getBd();
   }
 
   getGato(): Gato[]{
     return this.gatos;
   }
 
-  getGatoBD(): Gato[]{
+  getGatoBD(): any[]{
     return this.gatosDB;
   }
 
@@ -37,10 +36,19 @@ export class GatoService {
   }
 
   getBd(){
-    this.afs.object("gatito/").snapshotChanges().subscribe( (data)=>{
-      console.log(data.payload.val());
-      this.gatosDB = data.payload.val();
-    } );
+    return new Promise((resolve, reject)=>{
+      this.afs.object("gatitossssssssss/").snapshotChanges().subscribe( (data)=>{
+        console.log(data);
+        if(data.payload.exists()){
+          resolve(this.gatosDB = data.payload.val());
+        }else{
+          console.log('error en BD!');
+          reject(new Error('Error en BD!!'));
+        }
+        
+      } );
+    });
+
   }
 
 
