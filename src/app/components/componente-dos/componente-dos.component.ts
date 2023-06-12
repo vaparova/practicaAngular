@@ -13,7 +13,7 @@ export class ComponenteDosComponent  {
   key = 'live_ssY9l2168QNh0FjlJVVmj4Nw23DQrgWzKCxLTfG96yi96UaVcsuPusbkVCNlcj9A';
   gato: Gato;
   arrGatos: Gato[] = [];
-  arrGatosDB = [];
+  arrGatosDB: Gato[] = [];
   
 
   constructor(private gatoServ: GatoService) {
@@ -22,7 +22,7 @@ export class ComponenteDosComponent  {
     ,250, 250);
 
     this.arrGatos = this.gatoServ.getGato(); // trae gatos de la api
-    this.arrGatosDB = this.gatoServ.gatosDB(); // trae gatos de la bd
+    this.arrGatosDB = this.gatoServ.getGatoBD(); // trae gatos de la bd
     
     setTimeout( ()=> {
       this.mostrarGatos(0, 3); // 0 - 3 / 4 - 7 / 8 - 9

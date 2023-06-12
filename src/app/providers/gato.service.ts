@@ -21,7 +21,7 @@ export class GatoService {
     return this.gatos;
   }
 
-  getGatoBD(){
+  getGatoBD(): Gato[]{
     return this.gatosDB;
   }
 
