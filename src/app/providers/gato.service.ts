@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Gato } from '../models/gato';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Observer } from 'rxjs';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +10,19 @@ import { Observable, Observer } from 'rxjs';
 export class GatoService {
 
   gatos: any = [];
+  gatosDB: any = [];
 
-  constructor( private httpClient: HttpClient) {
+  constructor( private httpClient: HttpClient, private afs: AngularFireDatabase) {
     this.consumirGatos();
+    this.getBd();
   }
 
   getGato(): Gato[]{
     return this.gatos;
+  }
+
+  getGatoBD(){
+    return this.gatosDB;
   }
 
   consumirGatos() {
@@ -28,4 +35,13 @@ export class GatoService {
     }); 
     });
   }
+
+  getBd(){
+    this.afs.object("gatito/").snapshotChanges().subscribe( (data)=>{
+      console.log(data.payload.val());
+      this.gatosDB = data.payload.val();
+    } );
+  }
+
+
 }

@@ -8,6 +8,10 @@ import { ComponenteDosComponent } from './components/componente-dos/componente-d
 import { HttpClientModule } from '@angular/common/http';
 import { GatoService } from './providers/gato.service';
 
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { environment } from '../environments/environment';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,7 +21,9 @@ import { GatoService } from './providers/gato.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [GatoService],
   bootstrap: [AppComponent]
