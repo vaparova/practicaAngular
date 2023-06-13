@@ -16,7 +16,7 @@ export class ComponenteDosComponent  {
   arrGatosDB: any[] = [];
   errorBD = false;
   errorTxt = '';
-  
+
 
   constructor(private gatoServ: GatoService) {
     this.gato = new Gato('12k',
@@ -24,8 +24,7 @@ export class ComponenteDosComponent  {
     ,250, 250);
 
     this.arrGatos = this.gatoServ.getGato(); // trae gatos de la api
-    this.gatoServ.getBd().then(()=>{
-
+    this.gatoServ.getBd2().then(()=>{
       console.log('Salio por el then');
       const a = this.gatoServ.getGatoBD();
       this.arrGatosDB.push(a);
@@ -37,7 +36,7 @@ export class ComponenteDosComponent  {
     }); // trae gatos de la bd
 
     console.log(this.gatoServ.getGatoBD());
-    
+
     setTimeout( ()=> {
       this.mostrarGatos(0, 3); // 0 - 3 / 4 - 7 / 8 - 9
     },2000);
