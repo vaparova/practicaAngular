@@ -53,7 +53,7 @@ export class GatoService {
 
   getBd2(){
     return new Promise((resolve, reject)=>{
-      const conexion = this.afs.object("gatito/").snapshotChanges();
+      const conexion = this.afs.object("gatitooooo/").snapshotChanges();
       conexion.pipe(
         catchError((err): any => {
           reject(new Error ('esto es un error' + err ));
@@ -62,6 +62,8 @@ export class GatoService {
         console.log(data);
         if(data.payload.exists()){
           resolve(this.gatosDB = data.payload.val());
+        }else{
+          reject(new Error('Error en BD!!'));
         }
       }
       );
