@@ -18,9 +18,6 @@ export class ComponenteDosComponent  {
 
 
   constructor(private gatoServ: GatoService) {
-    // this.gato = new Gato('12k',
-    // 'https://thecatapi.com/api/images/get?format=src&type=gif?results_per_page='
-    // ,250, 250);
 
     this.obtenerGatoApi().then( ()=>{
       this.mostrarGatos(0,3); // de esta forma evitamos el setTimeOut()
@@ -41,16 +38,10 @@ export class ComponenteDosComponent  {
 
     // });
 
-    this.obtenerGatoDB().then( ()=>{
-      this.setGatoDB();
-    });
+    // this.obtenerGatoDB().then( ()=>{
+    //  // this.setGatoDB();
+    // });
 
-    //console.log(this.gatoServ.getGatoBD());
-
-    // setTimeout( ()=> {
-    //   this.mostrarGatos(0, 3); // 0 - 3 / 4 - 7 / 8 - 9
-    // },2000);
-    //console.log(this.arrGatos);
    }
 
   // C O N E X I O N   G A T O   S E R V I C E
@@ -65,34 +56,32 @@ export class ComponenteDosComponent  {
 
   }
 
-  obtenerGatoDB(): Promise<boolean> {
-    return this.gatoServ.getBd2().then(()=>{
-      const a = this.gatoServ.getGatoBD();
-      this.arrGatosDB.push(a);
-      return true;
-    }).catch( (err)=> {
-      console.log('Salio por el catch');
-      this.errorTxt = err;
-      this.errorBD = true;
-      return false;
-    });
-  }
+  // obtenerGatoDB(): Promise<boolean> {
+  //   return this.gatoServ.getBd2().then(()=>{
+  //     const a = this.gatoServ.getGatoBD();
+  //     this.arrGatosDB.push(a);
+  //     return true;
+  //   }).catch( (err)=> {
+  //     console.log('Salio por el catch');
+  //     this.errorTxt = err;
+  //     this.errorBD = true;
+  //     return false;
+  //   });
+  // }
 
-  setGatoDB(){
-    this.gatoServ.setGatoBD(this.arrGatos).then(()=>{
-      console.log('carga en BD exitosa!');
-    }).catch( ()=> {
-      console.log('error al cargar datos en BD!');
-    });
-  }
+  // setGatoDB(){
+  //   this.gatoServ.setGatoBD(this.arrGatos).then(()=>{
+  //     console.log('carga en BD exitosa!');
+  //   }).catch( ()=> {
+  //     console.log('error al cargar datos en BD!');
+  //   });
+  // }
 
 
   // F U N C I O N E S   C O M P O N E N T E
 
   mostrarGatos(i: number, max: number){
-    // console.log(i);
     this.arrGatos.forEach( (gato, index: number)=>{
-    //  console.log(i);
       if( index >= i && index <= max ){
         gato.visible = true;
       }else{
@@ -101,8 +90,21 @@ export class ComponenteDosComponent  {
     });
   }
 
-  // cambiarGato(){
-  //   this.gato.url = this.gato.url + 1;
-  // }
+  guardarGato(id: string){
+  this.arrGatos.forEach(gato =>{
+    if(gato.id == id){
+      this.arrGatosDB.push(gato);
+    }
+  });
+  this.gatoServ.setGatoBD(this.arrGatosDB).then( ()=> {
+    console.log('carga exitosa!');
+  }).catch( ()=> {
+    console.log('error en carga bd');
+  });
+  console.log(this.arrGatosDB);    
+
+  }
+
+ 
 
 }
