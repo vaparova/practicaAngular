@@ -12,7 +12,7 @@ export class ComponenteDosComponent  {
   // key = 'live_ssY9l2168QNh0FjlJVVmj4Nw23DQrgWzKCxLTfG96yi96UaVcsuPusbkVCNlcj9A';
   // gato: Gato;
   arrGatos: Gato[] = [];
-  arrGatosDB: any[] = [];
+  arrGatosDB: Gato[] = [];
   errorBD = false;
   errorTxt = '';
 
@@ -68,6 +68,15 @@ export class ComponenteDosComponent  {
     });
   }
 
+  setGatoDB(){
+    this.gatoServ.setGatoBD(this.arrGatosDB).then( ()=> {
+      console.log('carga exitosa!');
+    }).catch( ()=> {
+      console.log('error en carga bd');
+    });
+    console.log(this.arrGatosDB);    
+  }
+
   // setGatoDB(){
   //   this.gatoServ.setGatoBD(this.arrGatos).then(()=>{
   //     console.log('carga en BD exitosa!');
@@ -95,13 +104,20 @@ export class ComponenteDosComponent  {
       this.arrGatosDB.push(gato);
     }
   });
-  this.gatoServ.setGatoBD(this.arrGatosDB).then( ()=> {
-    console.log('carga exitosa!');
-  }).catch( ()=> {
-    console.log('error en carga bd');
-  });
-  console.log(this.arrGatosDB);    
+  this.setGatoDB();   
 
+  }
+
+  borrarGato(id: string){
+    this.arrGatosDB.forEach((gato) =>{
+      console.log(gato.id, id);
+      if(gato.id == id){
+        console.log(this.arrGatosDB.indexOf(gato));
+        this.arrGatosDB.splice(this.arrGatosDB.indexOf(gato),1);
+      }
+    });
+    console.log(this.arrGatosDB);
+    this.setGatoDB();
   }
 
  
