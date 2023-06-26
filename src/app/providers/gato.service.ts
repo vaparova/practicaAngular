@@ -27,7 +27,7 @@ export class GatoService {
     return this.gatos;
   }
 
-  getGatoBD(): any[]{
+  getGatoBD(): Gato[]{
     return this.gatosDB;
   }
 
@@ -64,7 +64,7 @@ export class GatoService {
           reject(new Error ('esto es un error' + err ));
         })
       ).subscribe( (data: any) =>{
-        // console.log(data);
+        console.log(data.payload.val());
         if(data.payload.exists()){
           resolve(this.gatosDB = data.payload.val());
         }else{
@@ -76,7 +76,7 @@ export class GatoService {
   }
 
   setBd(): Promise<boolean>{
-    return this.afs.object('gatito/').set(this.gatos).then( ()=> {
+    return this.afs.object('gatito/').set(this.gatosDB).then( ()=> {
       return true;
     }).catch( ()=> {
       return false;

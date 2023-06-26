@@ -38,9 +38,9 @@ export class ComponenteDosComponent  {
 
     // });
 
-    // this.obtenerGatoDB().then( ()=>{
-    //  // this.setGatoDB();
-    // });
+    this.obtenerGatoDB().then( ()=>{
+      
+    });
 
    }
 
@@ -56,18 +56,17 @@ export class ComponenteDosComponent  {
 
   }
 
-  // obtenerGatoDB(): Promise<boolean> {
-  //   return this.gatoServ.getBd2().then(()=>{
-  //     const a = this.gatoServ.getGatoBD();
-  //     this.arrGatosDB.push(a);
-  //     return true;
-  //   }).catch( (err)=> {
-  //     console.log('Salio por el catch');
-  //     this.errorTxt = err;
-  //     this.errorBD = true;
-  //     return false;
-  //   });
-  // }
+  obtenerGatoDB(): Promise<boolean> {
+    return this.gatoServ.getBd2().then(()=>{
+      this.arrGatosDB = this.gatoServ.getGatoBD();
+      return true;
+    }).catch( (err)=> {
+      console.log('Salio por el catch', err);
+      this.errorTxt = err;
+      this.errorBD = true;
+      return false;
+    });
+  }
 
   // setGatoDB(){
   //   this.gatoServ.setGatoBD(this.arrGatos).then(()=>{
