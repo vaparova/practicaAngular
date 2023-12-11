@@ -84,32 +84,6 @@ export class GatoService {
   }
 
 
-  // consumirGatos() {
-  //   this.httpClient.get('https://api.thecatapi.com/v1/images/search?limit=10').subscribe((data) => {
-  //     Array(data).forEach((gato: any) => {
-  //       gato.forEach((cat:any) => {
-  //         let g = new Gato(cat.id, cat.url, cat.width, cat.height);
-  //         this.gatos.push(g);
-  //       });
-  //     });
-  //   });
-  // }
-
-
-  // getBd(){
-  //   return new Promise((resolve, reject)=>{
-  //    this.afs.object("gatito/").snapshotChanges().subscribe( (data)=>{
-  //       console.log(data);
-  //       if(data.payload.exists()){
-  //         resolve(this.gatosDB = data.payload.val());
-  //       }else{
-  //         console.log('error en BD!');
-  //         reject(new Error('Error en BD!!'));
-  //       }
-
-  //     } );
-  //   });
-
-  // }
+ 
 
 }
